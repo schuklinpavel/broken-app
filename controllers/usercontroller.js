@@ -1,5 +1,5 @@
-var router = Router();
-var bcrypt = require('bcrypt');
+var router = require('express').Router();
+var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 var User = require('../db').import('../models/user');
@@ -21,6 +21,7 @@ router.post('/signup', (req, res) => {
             },
 
             function signupFail(err) {
+
                 res.status(500).send(err.message)
             }
         )
